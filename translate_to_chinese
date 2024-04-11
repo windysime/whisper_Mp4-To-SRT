@@ -53,8 +53,13 @@ def generate_srt(result, output_file, time_offset=0):
     except Exception as e:
         print(f"生成SRT文件时出错：{e}")
 def format_srt_time(seconds):
-    """将秒转换为SRT时间格式。"""
-    return str(datetime.timedelta(seconds=seconds)).zfill(8) + ',000'
+    """Converts seconds to SRT time format."""
+    milliseconds = int((seconds - int(seconds)) * 1000)
+    hours = int(seconds / 3600)
+    seconds = seconds % 3600
+    minutes = int(seconds / 60)
+    seconds = seconds % 60
+    return f"{hours:02d}:{minutes:02d}:{int(seconds):02d},{milliseconds:03d}"
 if __name__ == "__main__":
     input_folder = r"../static_movie/"
     output_folder = r"../output/"
