@@ -1,4 +1,4 @@
-# whisper_Mp4-To-SRT
+# whisper_Mp4-add-SRT
 Use whisper to generate SRT files and translate them
 
 environment whisper,deepl
